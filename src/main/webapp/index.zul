@@ -1,7 +1,46 @@
 <?page title="Auto Generated index.zul"?>
-<window title="Hello World!!" border="normal" width = "400px"
-height = "500px">
 
-<label value="You are using: ${desktop.webApp.version}"/>
 
-</window>
+<vbox height="100%" width="100%" pack="center" align="center">
+	<div height="100%" width="100%" align="center">
+		<window title="Employee login" border="normal" width="500px"
+			height="201px" apply="com.zkfront.Service.LoginController">
+			<grid align="left">
+				<columns>
+					<column width="140px" />
+					<column width="*" />
+				</columns>
+				<rows>
+					<row align="center">
+						<image
+							src="/images/emplogin.jfif" width="140px" />
+						<vbox align="center">
+							<label value="Welcome to Colan"
+								style="font: bold" />
+							<!-- <label
+								value="the organization knowledge centre" /> -->
+						</vbox>
+					</row>
+					<row>
+						<label value="User ID" />
+						<textbox id="loginUserID" cols="20" />
+					</row>
+					<row>
+						<label value="Password" />
+						<textbox id="loginPassword" cols="20"
+							type="password" />
+					</row>
+					<!-- <row>
+						<space />
+						<space />
+					</row> -->
+					<row>
+						<space />
+						<button id="loginSubmit" label="Submit" />
+					</row>
+				</rows>
+			</grid>
+		</window>
+	</div>
+</vbox>
+

@@ -1,0 +1,7 @@
+<?page title="Auto Generated index.zul"?>
+<window title="Hello World!!" border="normal" width = "400px"
+height = "500px">
+
+<label value="You are using: ${desktop.webApp.version}"/>
+
+</window>

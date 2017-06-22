@@ -1,0 +1,8 @@
+<?page title="Dashboard" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="dashboardWindow" title="DashBoard" border="normal" width="500px"
+			height="500px">
+		Welcome <label value="${sessionScope.loginUserID}" />
+		Dashboard Content Here...!
+	</window>
+</zk>

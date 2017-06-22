@@ -17,8 +17,6 @@
 						<vbox align="center">
 							<label value="Welcome to Colan"
 								style="font: bold" />
-							<!-- <label
-								value="the organization knowledge centre" /> -->
 						</vbox>
 					</row>
 					<row>
@@ -30,10 +28,6 @@
 						<textbox id="loginPassword" cols="20"
 							type="password" />
 					</row>
-					<!-- <row>
-						<space />
-						<space />
-					</row> -->
 					<row>
 						<space />
 						<button id="loginSubmit" label="Submit" />

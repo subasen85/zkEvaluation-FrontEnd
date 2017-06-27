@@ -6,7 +6,6 @@ import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
-import org.zkoss.zul.Label;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
@@ -24,17 +23,19 @@ public class LoginController extends SelectorComposer implements CommonConstant 
 	@Wire
 	Textbox loginPassword;
 
-	@Wire
-	public Label welcomeId;
+	/*@Wire
+	public Label welcomeId;*/
 
-	/*
-	 * public void doAfterCompose(Component comp) throws Exception {
-	 * super.doAfterCompose(comp); if (comp.getId().equals("loginUserID")) { //
-	 * profilewin.setTitle("Hello: "
-	 * +Sessions.getCurrent().getAttribute("user").toString()+"!");
-	 * welcomeId.setValue("");
-	 * Sessions.getCurrent().removeAttribute("loginUserID"); } }
-	 */
+	
+	/*@SuppressWarnings("unchecked")
+	public void doAfterCompose(Component comp) throws Exception {
+	  super.doAfterCompose(comp); 
+	  if (comp.getId().equals("loginUserID")) { 
+		  welcomeId.setValue("Hello: " +Sessions.getCurrent().getAttribute("user").toString()+"!");
+		  Sessions.getCurrent().removeAttribute("loginUserID"); 
+	  } 
+	}*/
+	 
 
 	@Listen("onClick=#loginSubmit")
 	public void submit() {

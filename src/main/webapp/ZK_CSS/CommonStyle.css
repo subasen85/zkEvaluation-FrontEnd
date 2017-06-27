@@ -1,0 +1,96 @@
+@CHARSET "ISO-8859-1";
+
+/* .selector
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.float_right {
+	float: right;
+}
+
+#toolbar {
+    position: fixed;
+    width: 100%;
+    height: 25px;
+    top: 0;
+    left: 0;
+    padding: 5px 10px; some styling, please note overall height of the object will be 35px due to 5px padding on top/bottom.
+    background: #ccc; some styling
+    border-bottom: 1px solid #333; some styling
+}
+
+body {
+    margin-top: 35px;
+} */
+
+.horizontal, .vertical {
+	min-height: 300px;
+	background-color: #EAE7E7;
+}
+.navbar {
+	position: absolute;
+    background-color: #867a41; /* #ccc8c8; */
+    width: 100%;
+    height:50px;
+}
+
+// Dashboard Navigation Style
+.dash_navbar {
+	margin-top: 5px; 
+	font: inherit; 
+	font-size: 30px; 
+	color: #1f1d1d;
+}
+
+.sidebar{
+	margin-top: 50px
+}
+.container,.z-menubar-hor,.z-menubar-ver {
+    border: 1px solid #D8D8D8;
+}
+.z-menubar-hor {
+    width: 580px;
+}
+.z-menubar-ver {
+    border-right: 0 none;
+    width: 149px;
+    height: 420px;
+}
+ 
+.container {
+    padding: 5px;
+}
+ 
+.z-menu-item-body {
+    padding: 5px 2px;
+}
+.z-menubar-ver .z-menu-body,
+.z-menubar-ver .z-menu-item-body {
+    width: 140px !important;
+}
+ 
+.z-menubar-ver .z-menu-item-body .z-menu-item-inner-m,
+.z-menubar-ver .z-menu-body .z-menu-item-inner-m,
+.z-menubar-ver .z-menu-item-body .z-menu-inner-m,
+.z-menubar-ver .z-menu-body .z-menu-inner-m {
+    text-align: left;
+}
+ 
+.mo_head {
+    font-size: 24px;
+    font-weight: normal;
+    color: #F26522;
+    margin-bottom: 0px;
+}
+ 
+.mo_footer {
+    background: #202020;
+    width: 582px;
+    height: 20px;
+    color: #c6c6c6;
+    text-align: center;
+

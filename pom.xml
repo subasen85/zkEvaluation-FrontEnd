@@ -41,7 +41,13 @@
 			<version>${logback.version}</version>
 		</dependency>
 
-		
+		<!-- JSON Dependency -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20080701</version>
+		</dependency>
+	
 		<!-- jstl -->
 		<dependency>
 			<groupId>jstl</groupId>

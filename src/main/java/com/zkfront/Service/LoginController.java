@@ -1,5 +1,12 @@
 package com.zkfront.Service;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -13,10 +20,13 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
+import com.google.gson.Gson;
 import com.zk.commonservice.CommonService;
 import com.zkfront.Interface.CommonConstant;
+import com.zkfront.Interface.EmployeeConstant;
+import com.zkfront.model.EmployeeDTO;
 
-public class LoginController extends SelectorComposer implements CommonConstant {
+public class LoginController extends SelectorComposer implements CommonConstant, EmployeeConstant {
 	/**
 	 * 
 	 */
@@ -47,7 +57,7 @@ public class LoginController extends SelectorComposer implements CommonConstant 
 		if (jsonResponse != null && jsonResponse.length() != 0) {
 			String response_Status = jsonResponse.getString(RESPONSE_STATUS);
 			if (RESPONSE_SUCCESS.equals(response_Status)) {
-				LoginAuthenticationSuccess(loginUserID.getValue());
+				LoginAuthenticationSuccess(loginUserID.getValue(), jsonResponse);
 			} else {
 				Messagebox.show("Username and password are not correct", "Error", Messagebox.OK, Messagebox.ERROR);
 			}
@@ -62,16 +72,33 @@ public class LoginController extends SelectorComposer implements CommonConstant 
 
 	}
 
+	
 	// Login Authentication Success
-	private void LoginAuthenticationSuccess(String loginUserID) {
+	private void LoginAuthenticationSuccess(String loginUserID, JSONObject jsonResponse) throws JSONException {
 		Session session = Sessions.getCurrent();
 		session.setAttribute(LOGIN_USER_ID, loginUserID);
+		session.setAttribute(EMPLOYEE_LIST_STRING, convertJSONArrayToList(jsonResponse));
 		Executions.sendRedirect("/zulPages/dashboard.zul");
 
 		// temp needed only
 		if (session.hasAttribute(LOGIN_USER_ID)) {
 			System.err.println("check session " + session.getAttribute(LOGIN_USER_ID));
 		}
+	}
+
+	
+	// convert an JSONArray To List
+	private List<EmployeeDTO> convertJSONArrayToList(JSONObject jsonResponse) throws JSONException {
+		List<EmployeeDTO> list = new ArrayList<EmployeeDTO>();
+		JSONArray jsonArray  = jsonResponse.getJSONArray(EMPLOYEE_STRING);
+		
+		if (jsonArray != null) {
+			for (int i = 0; i < jsonArray.length(); i++) {
+				EmployeeDTO empDTO = new Gson().fromJson(jsonArray.get(i).toString(), EmployeeDTO.class);
+				list.add(empDTO);
+			}
+		}
+		return list;
 	}
 	
 }

@@ -62,6 +62,13 @@
 			<version>20080701</version>
 		</dependency>
 	
+		<!-- GSON Dependency -->
+		<dependency>
+	        <groupId>com.google.code.gson</groupId>
+	        <artifactId>gson</artifactId>
+	        <version>2.2.4</version>
+	    </dependency>
+    
 		<!-- jstl -->
 		<dependency>
 			<groupId>jstl</groupId>

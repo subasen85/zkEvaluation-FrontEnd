@@ -2,13 +2,16 @@ package com.zkfront.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.zkoss.zk.ui.Page;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zk.ui.util.Initiator;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Messagebox;
@@ -21,7 +24,7 @@ import com.zkfront.Interface.CommonConstant;
 import com.zkfront.Interface.EmployeeConstant;
 import com.zkfront.model.EmployeeDTO;
 
-public class DashboardController extends SelectorComposer implements CommonConstant, EmployeeConstant {
+public class DashboardController extends SelectorComposer implements CommonConstant, EmployeeConstant, Initiator {
 	
 	public static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
 	
@@ -100,6 +103,12 @@ public class DashboardController extends SelectorComposer implements CommonConst
 				Messagebox.show("Username and password are not correct", "Error", Messagebox.OK, Messagebox.ERROR);
 			}
 		}
+		
+	}
+
+
+	@Override
+	public void doInit(Page page, Map<String, Object> args) throws Exception {
 		
 	}
 }

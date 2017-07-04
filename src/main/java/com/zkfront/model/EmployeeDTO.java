@@ -13,7 +13,7 @@ public class EmployeeDTO {
 	private String status;
 	private Date created_Date;
 	private Integer versionNo;
-	private Integer gender;
+	private String gender;
 	private String empType;
 	
 	
@@ -80,10 +80,10 @@ public class EmployeeDTO {
 		this.versionNo = versionNo;
 	}
 	
-	public Integer getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(Integer gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	

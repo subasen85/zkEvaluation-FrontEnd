@@ -1,0 +1,24 @@
+<div id="sidebar" sclass="sidebar">
+    
+	<!-- Navigation List -->
+	<navbar id="navbar" sclass="nav-list" orient="vertical">
+		<navitem label="Dashboard" iconSclass="z-icon-dashboard" selected="true"/>
+		<navitem label="New Employee" iconSclass="z-icon-text-width"/> 	
+		<navitem label="Tables" iconSclass="z-icon-list">
+		</navitem>
+		<navitem label="Forms" iconSclass="z-icon-edit">
+		</navitem>
+		<navitem label="Widgets" iconSclass="z-icon-list-alt" />
+		<navitem id="calitem" label="Calendar" iconSclass="z-icon-calendar" sclass="notify" tooltip="calpp, position=end_center, delay=0"/>
+		<navitem label="Gallery" iconSclass="z-icon-picture-o"/>
+	</navbar>
+	<!-- Toggler -->
+	<div sclass="sidebar-collapse">
+		<a id="toggler" iconSclass="z-icon-angle-double-left"/>
+	</div>
+	<!-- Tooptip for Calender Navitem -->
+	<popup id="calpp" zclass="tooltip" sclass="right tooltip-error cal">
+		<span zclass="tooltip-arrow"/>
+		<label zclass="tooltip-inner" value="2 Important Event"/>
+	</popup>
+</div>

@@ -2,6 +2,8 @@ package com.zkfront.Service;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
@@ -19,7 +21,8 @@ public class LoginController extends SelectorComposer implements CommonConstant 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	public static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
+	
 	@Wire
 	Textbox loginUserID;
 

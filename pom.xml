@@ -20,6 +20,20 @@
 		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
 	</properties>
 
+	<repositories>
+	
+	  <repository>
+	     <id>ZK CE</id>
+	     <url>http://mavensync.zkoss.org/maven2</url>
+	   </repository>
+	   
+	    <repository>
+	      <id>ZK EE</id>
+	      <url>https://maven.zkoss.org/repo/zk/ee</url>
+	    </repository>
+	    
+	  </repositories>
+  
 	<dependencies>
 
 		<!-- Unit Test -->
@@ -54,6 +68,12 @@
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 		</dependency>
+		
+		<dependency>
+	      <groupId>org.zkoss.addons</groupId>
+	      <artifactId>zk-bootstrap</artifactId>
+	      <version>1.0.0</version>
+	    </dependency>
 		
 		<!-- ZK Evaluation Project dependency  -->
 		<dependency>

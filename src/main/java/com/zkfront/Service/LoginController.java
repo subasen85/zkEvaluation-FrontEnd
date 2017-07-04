@@ -41,7 +41,7 @@ public class LoginController extends SelectorComposer implements CommonConstant 
 		jsonObject.put("password", password);
 		
 		CommonService commonService = new CommonService();
-		StringBuilder stringBuilder = commonService.commonServiceForListPostType(LOGIN_API_PATH, jsonObject);
+		StringBuilder stringBuilder = commonService.commonServiceForList(LOGIN_API_PATH, jsonObject, POST);
 		
 		JSONObject jsonResponse = new JSONObject(stringBuilder.toString());
 		if (jsonResponse != null && jsonResponse.length() != 0) {

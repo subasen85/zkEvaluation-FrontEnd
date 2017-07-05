@@ -8,15 +8,20 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zkoss.zk.ui.Page;
+import org.zkoss.zk.ui.Session;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.SelectorComposer;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.Initiator;
 import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Datebox;
+import org.zkoss.zul.Label;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Radio;
 import org.zkoss.zul.Radiogroup;
+import org.zkoss.zul.Row;
+import org.zkoss.zul.RowRenderer;
 import org.zkoss.zul.Textbox;
 
 import com.zk.commonservice.CommonService;
@@ -24,7 +29,7 @@ import com.zkfront.Interface.CommonConstant;
 import com.zkfront.Interface.EmployeeConstant;
 import com.zkfront.model.EmployeeDTO;
 
-public class DashboardController extends SelectorComposer implements CommonConstant, EmployeeConstant, Initiator {
+public class DashboardController extends SelectorComposer implements CommonConstant, EmployeeConstant, Initiator, RowRenderer<EmployeeDTO> {
 	
 	public static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
 	
@@ -51,7 +56,7 @@ public class DashboardController extends SelectorComposer implements CommonConst
 	private Checkbox Contractual;
 	
 	@Wire
-	private EmployeeDTO empDTO;
+	EmployeeDTO empDTO;
 	
 	
 	// Final Submit button from dashboard
@@ -59,14 +64,14 @@ public class DashboardController extends SelectorComposer implements CommonConst
 	public void finalSubmit() throws Exception {
 		System.err.println("Final check final button is success ");
 		
-		String employeeName = empName.getValue();
+		/*String employeeName = empName.getValue();
 		String employeeDesgn = empDesignation.getValue();
 		
 		Date dob = empdob.getValue();
 		Radio gender = genderValue.getSelectedItem();
 		System.err.println(gender);
 		
-		/*String empTypevalue = "";
+		String empTypevalue = "";
 		boolean commaAccept = false;
 		if (!Permanent.getValue().toString().isEmpty()) {
 			empTypevalue = Permanent.getId();
@@ -109,6 +114,19 @@ public class DashboardController extends SelectorComposer implements CommonConst
 
 	@Override
 	public void doInit(Page page, Map<String, Object> args) throws Exception {
-		
+		Session session = Sessions.getCurrent();
+		if (session.hasAttribute(EMPLOYEE_LIST_STRING)) {
+			System.err.println("check session " + session.getAttribute(LOGIN_USER_ID));
+			List<EmployeeDTO> empList = (List<EmployeeDTO>) session.getAttribute(EMPLOYEE_LIST_STRING);
+		}
 	}
+
+
+	@Override
+	public void render(Row row, EmployeeDTO empDTO, int index) throws Exception {
+		/*System.err.println("Render success ");
+		row.appendChild(new Label("label1"));
+        row.appendChild(new Label("label2"));*/		
+	}
+	
 }

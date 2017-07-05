@@ -1,11 +1,8 @@
 package com.zkfront.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.codehaus.jackson.map.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,27 +29,26 @@ public class LoginController extends SelectorComposer implements CommonConstant,
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
-	
+
 	@Wire
 	Textbox loginUserID;
 
 	@Wire
 	Textbox loginPassword;
 
-
 	@Listen("onClick=#loginSubmit")
 	public void submit() throws JSONException {
 		System.err.println("hello world submit");
 		String userName = loginUserID.getValue();
 		String password = loginPassword.getValue();
-		
+
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("username", userName);
 		jsonObject.put("password", password);
-		
+
 		CommonService commonService = new CommonService();
 		StringBuilder stringBuilder = commonService.commonServiceForList(LOGIN_API_PATH, jsonObject, POST);
-		
+
 		JSONObject jsonResponse = new JSONObject(stringBuilder.toString());
 		if (jsonResponse != null && jsonResponse.length() != 0) {
 			String response_Status = jsonResponse.getString(RESPONSE_STATUS);
@@ -62,7 +58,7 @@ public class LoginController extends SelectorComposer implements CommonConstant,
 				Messagebox.show("Username and password are not correct", "Error", Messagebox.OK, Messagebox.ERROR);
 			}
 		}
-		
+
 		/*
 		 * final HashMap<String, Object> map = new HashMap<String, Object>();
 		 * map.put("loginUserID", loginUserID.getValue());
@@ -72,26 +68,19 @@ public class LoginController extends SelectorComposer implements CommonConstant,
 
 	}
 
-	
 	// Login Authentication Success
 	private void LoginAuthenticationSuccess(String loginUserID, JSONObject jsonResponse) throws JSONException {
 		Session session = Sessions.getCurrent();
 		session.setAttribute(LOGIN_USER_ID, loginUserID);
 		session.setAttribute(EMPLOYEE_LIST_STRING, convertJSONArrayToList(jsonResponse));
 		Executions.sendRedirect("/zulPages/dashboard.zul");
-
-		// temp needed only
-		if (session.hasAttribute(LOGIN_USER_ID)) {
-			System.err.println("check session " + session.getAttribute(LOGIN_USER_ID));
-		}
 	}
 
-	
 	// convert an JSONArray To List
 	private List<EmployeeDTO> convertJSONArrayToList(JSONObject jsonResponse) throws JSONException {
 		List<EmployeeDTO> list = new ArrayList<EmployeeDTO>();
-		JSONArray jsonArray  = jsonResponse.getJSONArray(EMPLOYEE_STRING);
-		
+		JSONArray jsonArray = jsonResponse.getJSONArray(EMPLOYEE_STRING);
+
 		if (jsonArray != null) {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				EmployeeDTO empDTO = new Gson().fromJson(jsonArray.get(i).toString(), EmployeeDTO.class);
@@ -100,5 +89,5 @@ public class LoginController extends SelectorComposer implements CommonConstant,
 		}
 		return list;
 	}
-	
+
 }
